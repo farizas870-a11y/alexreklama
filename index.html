@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALEX Reklama Xizmati</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0f1a;--card:#1a1a2e;--text:#fff;--accent:#6a00ff;}
+.light{--bg:#f4f4f4;--card:#fff;--text:#111;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter}
+body{background:var(--bg);color:var(--text);transition:.3s;scroll-behavior:smooth;}
+.toggle{position:fixed;top:15px;right:15px;z-index:999;background:#fff;color:#000;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:14px;}
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;}
+.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.15;}
+.hero-content{position:relative;z-index:1}
+.hero h1{font-size:48px;font-weight:800;background:linear-gradient(90deg,#a855f7,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{max-width:700px;margin:20px auto;font-size:18px;opacity:.9}
+.hero .btn{padding:14px 35px;background:linear-gradient(90deg,#7c3aed,#22d3ee);border-radius:40px;text-decoration:none;color:white;font-weight:600;font-size:16px;box-shadow:0 0 40px #7c3aed;margin:5px;display:inline-block;}
+section{padding:70px 10%}
+h2{text-align:center;font-size:36px;margin-bottom:50px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.card{background:rgba(255,255,255,0.08);backdrop-filter:blur(15px);border-radius:20px;padding:25px;transition:.4s;border:1px solid rgba(255,255,255,0.15);opacity:0;transform:translateY(30px);cursor:pointer;}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 15px 40px rgba(0,0,0,.5)}
+.card h3{font-size:20px;margin-bottom:10px}
+.price{font-size:20px;font-weight:700;color:#22d3ee}
+.highlight{outline:3px solid #22d3ee;box-shadow:0 0 30px #22d3ee}
+.note{max-width:900px;margin:auto;text-align:center;font-size:16px;line-height:1.6;opacity:.9}
+.cta{text-align:center;margin-top:20px}
+.cta a, .cta button{padding:14px 35px;background:linear-gradient(90deg,#22d3ee,#a855f7);color:white;text-decoration:none;font-weight:700;border-radius:50px;font-size:16px;cursor:pointer;margin:5px;display:inline-block;border:none}
+footer{text-align:center;padding:20px;opacity:.6}
+#admin{display:block;}
+@media(max-width:600px){.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<!-- ADMIN LOGIN
+<div class="modal" id="adminLogin">
+  <div class="modal-box">
+    <h3>Admin Login</h3>
+    <input id="adminLoginInput" placeholder="Login">
+    <input id="adminPassInput" type="password" placeholder="Parol">
+    <button onclick="adminLogin()">Kirish</button>
+    <button onclick="closeAdmin()">Yopish</button>
+  </div>
+</div> -->
+<!-- <div class="toggle" onclick="toggleMode()">🌙 / ☀️</div> -->
+
+<div class="hero">
+  <!-- <video autoplay muted loop>
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video> -->
+  <div class="hero-content">
+    <h1>ALEX REKLAMA XIZMATI</h1>
+    <p>YouTube, Instagram, Telegram va boshqa ijtimoiy tarmoqlar uchun professional reklama 🚀</p>
+    <a href="#prices" class="btn">Narxlarni ko‘rish</a>
+    <a href="https://t.me/neo_aleks" target="_blank" class="btn">Reklama buyurtma berish</a>
+    <a href="https://t.me/MUKHIDDINOV_sh" target="_blank" class="btn"> Dizayn buyurtma berish</a>
+    <!-- <button class="btn" onclick="showCard('0')">💳 Click/Payme bilan to‘lash</button> -->
+  </div>
+</div>
+
+<section id="prices">
+<h2>Reklama paketlari</h2>
+<div class="cards">
+<div class="card" onclick="orderTelegram('5.000 💵')">
+<h3>Telegram oddiy ssilka</h3><div class="price">5.000 💵</div>
+<div class="cta">
+<a href="https://t.me/neo_aleks?text=Assalomu aleykum 5.000 so'mlik reklama olmoqchiman  💵">Buyurtma berish</a>
+<button onclick="showCard('5000')">💳 To‘lash</button>
+</div>
+</div>
+
+<div class="card" onclick="orderTelegram('8.000 💴')">
+<h3>Telegram PRO yozuv</h3><div class="price">8.000 💴</div>
+<div class="cta">
+<a href="https://t.me/neo_aleks?text=Assalomu aleykum 8.000 so'mlik reklama olmoqchiman  💴">Buyurtma berish</a>
+<button onclick="showCard('8000')">💳 To‘lash</button>
+</div>
+</div>
+
+<div class="card" onclick="orderTelegram('12.000 💷')">
+<h3>YouTube soobshestvo</h3><div class="price">12.000 💷</div>
+<div class="cta">
+<a href="https://t.me/neo_aleks?text=Assalomu aleykum 12.000 so'mlik reklama olmoqchiman  💷">Buyurtma berish</a>
+<button onclick="showCard('12000')">💳 To‘lash</button>
+</div>
+</div>
+
+<div class="card highlight" onclick="orderAdmin('20.000 💰')">
+<h3>YouTube video (PRO) 🔥</h3><div class="price">20.000 💰</div>
+<div class="cta">
+<a href="https://t.me/neo_aleks?text=Assalomu aleykum 20.000 so'mlik reklama olmoqchiman  💰">Buyurtma berish</a>
+<button onclick="showCard('20000')">💳 To‘lash</button>
+</div>
+</div>
+
+<div class="card highlight" onclick="orderAdmin('38.000 💸💰')">
+<h3>HAMMASI (FULL PRO)</h3><div class="price">38.000 💸💰</div>
+<div class="cta">
+<a href="https://t.me/neo_aleks?text=Assalomu aleykum 38.000 so'mlik reklama olmoqchiman 💸💰">Buyurtma berish</a>
+<button onclick="showCard('38000')">💳 To‘lash</button>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Dizaynerlik xizmatlari</h2>
+<div class="cards">
+<div class="card" onclick="orderDesigner('Avatar')">
+<h3>Avatar</h3>
+<div class="cta">
+<a href="https://t.me/MUKHIDDINOV_sh?text= Assalomu aleykum Avatar buyurtma bermoqchiman">Buyurtma berish</a>
+<button onclick="showCard('8000')">💳 To‘lash</button>
+</div>
+</div>
+
+<div class="card" onclick="orderDesigner('Banner')">
+<h3>Banner</h3>
+<div class="cta">
+<a href="https://t.me/MUKHIDDINOV_sh?text= Assalomu aleykum Banner buyurtma bermoqchiman">Buyurtma berish</a>
+<button onclick="showCard('12000')">💳 To‘lash</button>
+</div>
+</div>
+
+<div class="card" onclick="orderDesigner('Preview')">
+<h3>Preview</h3>
+<div class="cta">
+<a href="https://t.me/MUKHIDDINOV_sh?text= Assalomu aleykum Preview buyurtma bermoqchiman">Buyurtma berish</a>
+<button onclick="showCard('5000')">💳 To‘lash</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- <section>
+<h2>Admin panel</h2>
+<p style="text-align:center">Faqat admin uchun</p>
+</section> -->
+
+<footer>© 2026 ALEX Reklama Xizmati | alexreklama.uz</footer>
+
+<script>
+function toggleMode(){document.body.classList.toggle("light");}
+const cards=document.querySelectorAll(".card");
+window.addEventListener("scroll",()=>{cards.forEach(c=>{if(c.getBoundingClientRect().top<window.innerHeight-50)c.classList.add("show");});});
+
+// Telegram / Admin / Dizayner buyurtma
+function orderTelegram(service){ window.open("https://t.me/neo_aleks?text="+service); }
+function orderAdmin(service){ window.open("https://t.me/neo_aleks?text="+service); }
+function orderDesigner(service){ window.open("https://t.me/MUKHIDDINOV_sh?text="+service); }
+
+// Click / Payme to‘lov funksiyasi
+function showCard(amount){
+    let cardNumber = "7777 0120 9664 4712"; // <<< BU YERNI BO'SH QOLDIRDIM, ertaga yozasiz
+    if(cardNumber === "7777 0120 9664 4712"){
+        alert(`7777 0120 9664 4712!\nTo‘lov summasi: ${amount} so'm`);
+    } else {
+        alert(`To‘lov summasi: ${amount} so'm\nKarta raqami: ${cardNumber}`);
+    }
+}
+</script>
+
+</body>
+</html>
